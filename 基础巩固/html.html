@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            box-sizing: border-box;
+            width:200px;
+            min-height:200px;
+            overflow: auto;
+            background-color: pink;
+            display: none
+        }
+        .focus{
+            border:5px solid red;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            resize: none;
+        }
+        textarea{
+            width:200px;
+            min-height:200px;
+            overflow-x: hidden; 
+            overflow-y: hidden;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="content" contenteditable="true" tabindex="0"></div>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <input type="color">
+    <button class='btn'>点击出现</button>
+    <!-- <div contextmenu="mymenu">hahaha</div> -->
+    <script>
+        let con = document.querySelector('.content')
+        let area = document.querySelector('textarea')
+        let btns = document.querySelector('.btn')
+        // con.onfocus = function (){
+        //     con.classList.add('focus')
+        // }
+        // con.onblur = function (){
+        //     con.classList.remove('focus')
+        // }
+        // // con.addEventListener('keydown',function(e){
+        // //     alert('keydown')
+        // // },false)
+        // con.addEventListener('keypress',function(e){
+        //     alert('keypress')
+        // },false)
+        // con.addEventListener('keyup',function(e){
+        //     alert('keyup')
+        // },false)
+        // area.onfocus = function (){
+        //     area.classList.add('focus')
+        //     area.readOnly = false
+        // }
+        // area.onblur = function (){
+        //     area.classList.remove('focus')
+        //     area.readOnly = true
+        // }
+        // 第一种方法用焦点的方法
+        btns.onclick = function (){
+            con.style.display = 'block'
+        }
+        // con.onfocus = function (){
+        //     return
+        // }
+        // con.onblur = function (){
+        //     con.style.display = 'none'
+        // }
+
+        // 第二种方法，用contains
+        document.onclick = function (e){
+            if(con.contains(e.target)){
+                con.style.display = 'block'
+            }
+        }
+    </script>
+</body>
+</html>
